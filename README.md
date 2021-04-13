@@ -21,4 +21,4 @@ Instructions
 4. Once you are logged in, you can add new course item (Note: 'course_name' is mandatory for filling in; other fields have default values: 'start_date' = today, 'end_date' = today, 'number_of_lectures' = 1.
 5. Click GET button to watch the result.
 6. For navigation/search use 'Filters' button.
-7. Go to http://127.0.0.1:8000/course/<course_id>/ to read/update/delete the course item using GET/PATCH/DELETE methods respectively.
+7. Go to http://127.0.0.1:8000/course/course_id/ to read/update/delete the course item using GET/PATCH/DELETE methods respectively.
