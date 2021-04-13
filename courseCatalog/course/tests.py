@@ -121,6 +121,14 @@ class CourseTestCase(TestCase):
         )
         self.assertEqual(request.status_code, 403)
 
+    def test_courseDetail_delete(self):
+        request = self.client.delete('/course/{}'.format(self.course.id))
+        self.assertEqual(request.status_code, 204)
+
+    def test_courseDetail_delete_anonymous_user(self):
+        request = self.client_anonymous.delete('/course/{}'.format(self.course.id))
+        self.assertEqual(request.status_code, 403)
+
     def test_courseDetail_get_404(self): 
         # only single course obj is created (id=1)
         # id=2 throws HTTP 404 status 
