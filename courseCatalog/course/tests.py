@@ -1,5 +1,6 @@
 from django.test import TestCase, Client
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 from datetime import date, timedelta
 from .models import Course
 
@@ -144,10 +145,10 @@ class CourseTestCase(TestCase):
 
     def test_course_model_start_date_check(self):
         self.payload['start_date'] = yesterday
-        with self.assertRaises(ValueError):
+        with self.assertRaises(ValidationError):
             Course.objects.create(**self.payload)
 
     def test_course_model_end_date_check(self):
         self.payload['end_date'] = yesterday
-        with self.assertRaises(ValueError):
+        with self.assertRaises(ValidationError):
             Course.objects.create(**self.payload)

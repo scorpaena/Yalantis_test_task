@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 from datetime import date
 
 class Course(models.Model):
@@ -9,9 +10,9 @@ class Course(models.Model):
     
     def clean(self):
         if self.start_date < date.today():
-            raise ValueError('you cannot create courses in the past')
+            raise ValidationError('you cannot create courses in the past')
         elif self.start_date > self.end_date:
-            raise ValueError("'end_date' cannot be before 'start_date'")
+            raise ValidationError("'end_date' cannot be before 'start_date'")
 
     def save(self, **kwargs):
         self.clean()
